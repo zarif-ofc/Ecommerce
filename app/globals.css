@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+/* ========================================
+   CRESOL — DESIGN SYSTEM TOKENS (TW v4)
+   ======================================== */
+
+@theme inline {
+  /* --- Colours --- */
+  --color-background: #ffffff;
+  --color-alabaster: #fbfbfb;
+  --color-bone: #f4f4f5;
+  --color-sand: #f0efeb;
+  --color-midnight: #111111;
+  --color-slate-muted: #71717a;
+  --color-champagne: #c5a880;
+  --color-champagne-light: #d4bc9a;
+  --color-champagne-dark: #a88f6a;
+  --color-border: #e4e4e7;
+  --color-border-light: #f0f0f2;
+
+  /* --- Typography --- */
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* --- Animations --- */
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-slide-up: slide-up 0.5s ease-out both;
+  --animate-slide-in-right: slide-in-right 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-out-right: slide-out-right 0.3s ease-in both;
+  --animate-scale-in: scale-in 0.3s ease-out both;
+  --animate-shimmer: shimmer 2s infinite linear;
+}
+
+/* --- Keyframes --- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes check-bounce {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ========================================
+   BASE STYLES & MOBILE OPTIMIZATIONS
+   ======================================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll bleed on mobile */
+  overflow-x: hidden;
+  /* Safe area variables fallback */
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-midnight);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* Disable tap highlight box on iOS/Android */
+  -webkit-tap-highlight-color: transparent;
+  /* Smooth touch momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent iOS Safari from auto-zooming on input focus (requires >= 16px font) */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Hide scrollbars for horizontal carousel reels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Touch active feedback */
+.touch-press {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s ease;
+}
+.touch-press:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+::selection {
+  background-color: #c5a88033;
+  color: var(--color-midnight);
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-muted);
+}
+
+/* ========================================
+   COMPONENT UTILITIES
+   ======================================== */
+
+/* Frosted glass effect for the header */
+.glass-header {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* Product card image hover swap */
+.product-card-image {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.06);
+}
+
+/* Overlay for cart drawer */
+.cart-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+/* Luxury button shimmer on hover */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-luxury::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn-luxury:hover::after {
+  left: 100%;
+}
+
+/* Accordion animation */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.accordion-content[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+  overflow: hidden;
+}
+
+/* Image gallery indicator dot */
+.gallery-dot {
+  transition: all 0.3s ease;
+}
+
+.gallery-dot.active {
+  width: 24px;
+  background-color: var(--color-champagne);
+}
+
+/* Stagger animations for grid items */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.30s; }

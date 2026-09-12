@@ -1,0 +1,315 @@
+{
+  "communities": {
+    "0": [
+      "app_checkout_page",
+      "app_checkout_page_checkoutpage",
+      "app_checkout_page_deliveryzone",
+      "app_checkout_page_formdata",
+      "app_layout",
+      "app_layout_cormorant",
+      "app_layout_inter",
+      "app_layout_metadata",
+      "app_layout_rootlayout",
+      "components_cart_cartdrawer",
+      "components_cart_cartdrawer_cartdrawer",
+      "components_layout_footer",
+      "components_layout_footer_facebookicon",
+      "components_layout_footer_footer",
+      "components_layout_footer_instagramicon",
+      "components_layout_header",
+      "components_layout_header_header",
+      "lib_store_usecartstore",
+      "ref_lucide_react",
+      "ref_react",
+      "ref_sonner",
+      "types_database_orderitem"
+    ],
+    "1": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "2": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start",
+      "package_version",
+      "ref_eslint",
+      "ref_eslint_config_next",
+      "ref_react_dom",
+      "ref_tailwindcss",
+      "ref_tailwindcss_postcss",
+      "ref_types_node",
+      "ref_types_react",
+      "ref_types_react_dom",
+      "ref_typescript"
+    ],
+    "3": [
+      "app_homecontent_homecontent",
+      "app_order_confirmation_id_page",
+      "app_order_confirmation_id_page_confirmationpageprops",
+      "app_order_confirmation_id_page_getorder",
+      "app_order_confirmation_id_page_orderconfirmationpage",
+      "app_page",
+      "app_page_getproducts",
+      "app_page_homeloading",
+      "app_page_homepage",
+      "lib_supabase",
+      "lib_supabase_issupabaseconfigured",
+      "lib_supabase_supabase",
+      "lib_utils_generatewhatsapplink",
+      "ref_supabase_supabase_js",
+      "types_database_order"
+    ],
+    "4": [
+      "app_homecontent",
+      "components_ui_categoryfilter",
+      "components_ui_categoryfilter_categories",
+      "components_ui_categoryfilter_categoryfilter",
+      "components_ui_categoryfilter_categoryfilterprops",
+      "lib_store",
+      "lib_store_cartstore",
+      "ref_zustand",
+      "types_database",
+      "types_database_cartitem",
+      "types_database_database",
+      "types_database_productcategory"
+    ],
+    "5": [
+      "app_homecontent_homecontentprops",
+      "app_product_slug_productdetail",
+      "app_product_slug_productdetail_productdetail",
+      "app_product_slug_productdetail_productdetailprops",
+      "components_ui_productcard",
+      "components_ui_productcard_productcard",
+      "components_ui_productcard_productcardprops",
+      "lib_utils",
+      "lib_utils_calculatediscount",
+      "lib_utils_cn",
+      "lib_utils_formatprice",
+      "types_database_product"
+    ],
+    "6": [
+      "app_product_slug_page",
+      "app_product_slug_page_generatemetadata",
+      "app_product_slug_page_getproduct",
+      "app_product_slug_page_getrelatedproducts",
+      "app_product_slug_page_productpage",
+      "app_product_slug_page_productpageprops",
+      "lib_mock_data",
+      "lib_mock_data_mockproducts",
+      "next_config",
+      "next_config_nextconfig",
+      "ref_next"
+    ],
+    "7": [
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_postcss",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript"
+    ],
+    "8": [
+      "package_dependencies",
+      "package_dependencies_lucide_react",
+      "package_dependencies_next",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_sonner",
+      "package_dependencies_supabase_supabase_js",
+      "package_dependencies_zustand"
+    ],
+    "9": [
+      "eslint_config",
+      "eslint_config_eslintconfig"
+    ],
+    "10": [
+      "postcss_config",
+      "postcss_config_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.1471861471861472,
+    "1": 0.10526315789473684,
+    "2": 0.1111111111111111,
+    "3": 0.2,
+    "4": 0.2727272727272727,
+    "5": 0.36363636363636365,
+    "6": 0.2545454545454545,
+    "7": 0.2222222222222222,
+    "8": 0.25,
+    "9": 1.0,
+    "10": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "lib_utils_formatprice",
+      "label": "formatPrice()",
+      "degree": 11
+    },
+    {
+      "id": "types_database_product",
+      "label": "Product",
+      "degree": 10
+    },
+    {
+      "id": "lib_store_usecartstore",
+      "label": "useCartStore",
+      "degree": 9
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "degree": 8
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "degree": 7
+    },
+    {
+      "id": "app_product_slug_productdetail_productdetail",
+      "label": "ProductDetail()",
+      "degree": 5
+    },
+    {
+      "id": "components_ui_productcard_productcard",
+      "label": "ProductCard()",
+      "degree": 5
+    },
+    {
+      "id": "lib_utils_calculatediscount",
+      "label": "calculateDiscount()",
+      "degree": 5
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 5
+    }
+  ],
+  "surprises": [
+    {
+      "source": "HomeContentProps",
+      "target": "Product",
+      "source_files": [
+        "app/HomeContent.tsx",
+        "types/database.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; peripheral node `HomeContentProps` unexpectedly reaches hub `Product`"
+    },
+    {
+      "source": "ProductDetailProps",
+      "target": "Product",
+      "source_files": [
+        "app/product/[slug]/ProductDetail.tsx",
+        "types/database.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; peripheral node `ProductDetailProps` unexpectedly reaches hub `Product`"
+    },
+    {
+      "source": "ProductCardProps",
+      "target": "Product",
+      "source_files": [
+        "components/ui/ProductCard.tsx",
+        "types/database.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories; peripheral node `ProductCardProps` unexpectedly reaches hub `Product`"
+    },
+    {
+      "source": "CheckoutPage()",
+      "target": "formatPrice()",
+      "source_files": [
+        "app/checkout/page.tsx",
+        "lib/utils.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "CartDrawer()",
+      "target": "formatPrice()",
+      "source_files": [
+        "components/cart/CartDrawer.tsx",
+        "lib/utils.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `lucide-react` connect `Community 0` to `Community 2`, `Community 3`, `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.123) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `Community 7` to `Community 2`?",
+      "why": "High betweenness centrality (0.098) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `react` connect `Community 0` to `Community 2`, `Community 3`, `Community 4`, `Community 5`?",
+      "why": "High betweenness centrality (0.088) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `DeliveryZone`, `FormData`, `ConfirmationPageProps` to the rest of the system?",
+      "why": "60 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1471861471861472 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
