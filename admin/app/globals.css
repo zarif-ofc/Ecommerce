@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Clean White & Soft Mint Surfaces */
+  --color-bg-primary: #f7faf8;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #eff5f2;
+  --color-bg-elevated: #ffffff;
+  --color-bg-hover: #edf6f2;
+
+  /* Premium Muted Mint Green Palette */
+  --color-mint: #257255;
+  --color-mint-light: #e8f5ee;
+  --color-mint-medium: #368d6c;
+  --color-mint-dark: #1b563f;
+  --color-mint-border: #bfe0d1;
+
+  /* Aliases for seamless component compatibility */
+  --color-champagne: #257255;
+  --color-champagne-light: #e8f5ee;
+  --color-champagne-dark: #1b563f;
+
+  /* Clean Borders */
+  --color-border: #e2eae5;
+  --color-border-light: #edf4f0;
+
+  /* Deep Forest / Evergreen Slate Text */
+  --color-text-primary: #12221a;
+  --color-text-secondary: #476356;
+  --color-text-muted: #7c988b;
+
+  /* Status Colors */
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #e11d48;
+  --color-info: #0369a1;
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-slide-up: slide-up 0.4s ease-out both;
+  --animate-scale-in: scale-in 0.25s ease-out both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: rgba(37, 114, 85, 0.2);
+  color: #12221a;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbdcd3;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a9c7b8;
+}
+
+input, select, textarea {
+  font-size: 14px;
+}
+
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.admin-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(18, 34, 26, 0.04), 0 4px 14px -2px rgba(18, 34, 26, 0.03);
+}
+
+.admin-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.admin-table th {
+  background: #f1f6f3;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  padding: 11px 16px;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.admin-table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.admin-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13px;
+  vertical-align: middle;
+  background: #ffffff;
+}
+
+.admin-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.admin-table tbody tr:hover td {
+  background: var(--color-bg-hover);
+}
+
+.admin-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.admin-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
