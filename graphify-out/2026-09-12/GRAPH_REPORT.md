@@ -1,7 +1,7 @@
 # Graph Report - Cresol  (2026-09-12)
 
 ## Corpus Check
-- 33 files · ~165,899 words
+- 33 files · ~165,916 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

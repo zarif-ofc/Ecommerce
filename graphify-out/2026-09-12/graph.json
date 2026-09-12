@@ -472,7 +472,7 @@
       "file_type": "code",
       "norm_label": "rootlayout()",
       "source_file": "app/layout.tsx",
-      "source_location": "L56"
+      "source_location": "L57"
     },
     {
       "id": "components_layout_footer_facebookicon",
@@ -1899,7 +1899,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/layout/Header.tsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -3662,7 +3662,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0
     },
     {

@@ -12,9 +12,9 @@
     "semantic_hash": "4b18243527d0a487be390ccc3766d33e"
   },
   "app/HomeContent.tsx": {
-    "mtime": 1789153033.3118718,
-    "seen": 1789153591.1158345,
-    "ast_hash": "a57f4ba49dbdd744d7c790a5cee031d9",
+    "mtime": 1789213403.6670542,
+    "seen": 1789213409.159721,
+    "ast_hash": "8ed9836cda11bfa7a2118db794d48164",
     "semantic_hash": ""
   },
   "app/checkout/page.tsx": {
@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1789152985.6886487,
-    "seen": 1789153591.1158373,
-    "ast_hash": "181090ccc331dd7bd66c5c889382784c",
+    "mtime": 1789153839.8577385,
+    "seen": 1789153846.3936853,
+    "ast_hash": "9d2b452b51077e07ffd16f7c0857b679",
     "semantic_hash": ""
   },
   "app/order-confirmation/[id]/page.tsx": {
@@ -66,9 +66,9 @@
     "semantic_hash": "69c9f265c5686d5060c8e481f1409e9e"
   },
   "components/layout/Header.tsx": {
-    "mtime": 1789153002.5992198,
-    "seen": 1789153591.1160579,
-    "ast_hash": "bf196f3cca6e985a9c649e039b3134f0",
+    "mtime": 1789153832.3267493,
+    "seen": 1789153846.3941488,
+    "ast_hash": "6027da876d84e84aaeac159bbecbf890",
     "semantic_hash": ""
   },
   "components/ui/CategoryFilter.tsx": {
@@ -114,16 +114,16 @@
     "semantic_hash": "a96e5540d8628b68c7369d1bb7299960"
   },
   "next.config.ts": {
-    "mtime": 1789150842.900945,
-    "seen": 1789152492.8142686,
-    "ast_hash": "75abbadc854157e65fe8df5cba1e3a85",
-    "semantic_hash": "75abbadc854157e65fe8df5cba1e3a85"
+    "mtime": 1789154177.412046,
+    "seen": 1789154264.4934263,
+    "ast_hash": "61c6a8134c585b3aa7f2a0925a2ce24d",
+    "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1789150806.7204428,
-    "seen": 1789152492.814269,
-    "ast_hash": "5d4e036c432012d5b501579eb0a1ce34",
-    "semantic_hash": "5d4e036c432012d5b501579eb0a1ce34"
+    "mtime": 1789154200.403082,
+    "seen": 1789154264.493428,
+    "ast_hash": "d69c872c7a0057133113b09e953364d9",
+    "semantic_hash": ""
   },
   "postcss.config.mjs": {
     "mtime": 1789150541.8589501,

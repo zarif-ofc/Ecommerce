@@ -1,113 +1,148 @@
 # Graph Report - Cresol  (2026-09-12)
 
 ## Corpus Check
-- 33 files · ~165,916 words
+- 69 files · ~176,587 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 149 nodes · 252 edges · 16 communities (9 shown, 6 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 337 nodes · 475 edges · 31 communities (13 shown, 14 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `359f66c0`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- checkout/page.tsx
+- app/layout.tsx
 - compilerOptions
 - package.json
-- [slug]/page.tsx
-- database.ts
+- orders/page.tsx
+- types/database.ts
 - README.md
-- layout.tsx
+- next.config.ts
 - devDependencies
-- dependencies
+- admin/package.json
 - eslint.config.mjs
 - postcss.config.mjs
 - This is NOT the Next.js you know
 - rules/graphify.md
 - workflows/graphify.md
 - GEMINI.md
+- MultiImageUpload
+- compilerOptions
+- (dashboard)/layout.tsx
+- CarouselsPage
+- admin/app/layout.tsx
+- admin/README.md
+- LoginPage
+- proxy.ts
+- admin/AGENTS.md
+- admin/eslint.config.mjs
+- admin/next.config.ts
+- admin/postcss.config.mjs
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
-2. `useCartStore` - 13 edges
-3. `formatPrice()` - 11 edges
-4. `lucide-react` - 11 edges
+2. `compilerOptions` - 16 edges
+3. `useCartStore` - 13 edges
+4. `formatPrice()` - 11 edges
 5. `Product` - 10 edges
-6. `react` - 8 edges
-7. `ProductCard()` - 6 edges
-8. `sonner` - 6 edges
-9. `ProductDetail()` - 5 edges
-10. `isSupabaseConfigured` - 5 edges
+6. `MultiImageUpload()` - 9 edges
+7. `CarouselsPage()` - 8 edges
+8. `supabase` - 8 edges
+9. `ProductForm()` - 7 edges
+10. `PageHeader()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `HomeContentProps` --references--> `Product`  [EXTRACTED]
-  app/HomeContent.tsx → types/database.ts
 - `OrderConfirmationPage()` --calls--> `formatPrice()`  [EXTRACTED]
   app/order-confirmation/[id]/page.tsx → lib/utils.ts
 - `ProductDetailProps` --references--> `Product`  [EXTRACTED]
   app/product/[slug]/ProductDetail.tsx → types/database.ts
 - `ProductCardProps` --references--> `Product`  [EXTRACTED]
   components/ui/ProductCard.tsx → types/database.ts
-- `CheckoutPage()` --calls--> `useCartStore`  [EXTRACTED]
-  app/checkout/page.tsx → lib/store.ts
+- `HomeContentProps` --references--> `Carousel`  [EXTRACTED]
+  app/HomeContent.tsx → types/database.ts
+- `HomeContentProps` --references--> `Product`  [EXTRACTED]
+  app/HomeContent.tsx → types/database.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (16 total, 6 thin omitted)
+## Communities (31 total, 14 thin omitted)
 
-### Community 0 - "checkout/page.tsx"
-Cohesion: 0.21
-Nodes (16): CheckoutPage(), DeliveryZone, FormData, ProductDetail(), CartDrawer(), Header(), ProductCard(), WhatsAppFloatingButton() (+8 more)
+### Community 0 - "app/layout.tsx"
+Cohesion: 0.15
+Nodes (16): CheckoutPage(), cormorant, inter, metadata, viewport, ProductDetail(), CartDrawer(), Footer() (+8 more)
 
 ### Community 1 - "compilerOptions"
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.11
-Nodes (18): name, private, scripts, build, dev, lint, start, version (+10 more)
+Cohesion: 0.06
+Nodes (31): dependencies, lucide-react, next, react, react-dom, sonner, @supabase/supabase-js, zustand (+23 more)
 
-### Community 3 - "[slug]/page.tsx"
-Cohesion: 0.18
-Nodes (14): ConfirmationPageProps, getOrder(), OrderConfirmationPage(), generateMetadata(), getProduct(), getRelatedProducts(), ProductPage(), ProductPageProps (+6 more)
+### Community 3 - "orders/page.tsx"
+Cohesion: 0.07
+Nodes (32): allStatuses, OrdersPage(), statusVariant, dynamic, statusVariant, EditProductPageProps, ProductsPage(), ProductForm() (+24 more)
 
-### Community 4 - "database.ts"
-Cohesion: 0.17
-Nodes (14): HomeContent(), HomeContentProps, getProducts(), HomePage(), ProductDetailProps, categories, CategoryFilter(), CategoryFilterProps (+6 more)
+### Community 4 - "types/database.ts"
+Cohesion: 0.09
+Nodes (32): DeliveryZone, FormData, defaultSlide, HomeContent(), HomeContentProps, ConfirmationPageProps, getOrder(), OrderConfirmationPage() (+24 more)
 
 ### Community 5 - "README.md"
 Cohesion: 0.50
 Nodes (3): Deploy on Vercel, Getting Started, Learn More
 
-### Community 6 - "layout.tsx"
-Cohesion: 0.17
-Nodes (7): cormorant, inter, metadata, viewport, Footer(), nextConfig, next
-
 ### Community 7 - "devDependencies"
 Cohesion: 0.22
 Nodes (9): devDependencies, eslint, eslint-config-next, tailwindcss, @tailwindcss/postcss, @types/node, @types/react, @types/react-dom (+1 more)
 
-### Community 8 - "dependencies"
-Cohesion: 0.25
-Nodes (8): dependencies, lucide-react, next, react, react-dom, sonner, @supabase/supabase-js, zustand
+### Community 8 - "admin/package.json"
+Cohesion: 0.05
+Nodes (38): dependencies, lucide-react, next, react, react-dom, sonner, @supabase/supabase-js, devDependencies (+30 more)
+
+### Community 16 - "MultiImageUpload"
+Cohesion: 0.12
+Nodes (15): MultiImageUpload(), handleDrop(), handleFileChange(), handleFiles(), MultiImageUploadProps, SingleImageUpload(), handleDrop(), handleFileChange() (+7 more)
+
+### Community 17 - "compilerOptions"
+Cohesion: 0.11
+Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
+
+### Community 18 - "(dashboard)/layout.tsx"
+Cohesion: 0.19
+Nodes (6): DashboardLayout(), AdminShell(), navItems, Sidebar(), SidebarProps, isAuthenticated()
+
+### Community 19 - "CarouselsPage"
+Cohesion: 0.32
+Nodes (4): CarouselsPage(), fetchSlides(), handleSave(), moveSlide()
+
+### Community 21 - "admin/README.md"
+Cohesion: 0.50
+Nodes (3): Deploy on Vercel, Getting Started, Learn More
 
 ## Knowledge Gaps
-- **68 isolated node(s):** `DeliveryZone`, `FormData`, `cormorant`, `inter`, `viewport` (+63 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 80 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **156 isolated node(s):** `allStatuses`, `statusVariant`, `statusVariant`, `dynamic`, `EditProductPageProps` (+151 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 205 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `lucide-react` connect `checkout/page.tsx` to `package.json`, `[slug]/page.tsx`, `database.ts`, `layout.tsx`?**
-  _High betweenness centrality (0.108) - this node is a cross-community bridge._
+- **Why does `zustand` connect `package.json` to `app/layout.tsx`?**
+  _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
-  _High betweenness centrality (0.078) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **What connects `DeliveryZone`, `FormData`, `cormorant` to the rest of the system?**
-  _68 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **What connects `allStatuses`, `statusVariant`, `statusVariant` to the rest of the system?**
+  _156 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `app/layout.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.1477832512315271 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0625 - nodes in this community are weakly interconnected._
+- **Should `orders/page.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.0726764500349406 - nodes in this community are weakly interconnected._
