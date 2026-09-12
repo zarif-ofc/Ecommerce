@@ -36,7 +36,7 @@ export default function CarouselsPage() {
     subtitle: "",
     image_url: "",
     mobile_image_url: "",
-    link_url: "#collection",
+    link_url: "/shop",
   });
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function CarouselsPage() {
       subtitle: "",
       image_url: "",
       mobile_image_url: "",
-      link_url: "#collection",
+      link_url: "/shop",
     });
     setFormOpen(true);
   }
@@ -376,7 +376,7 @@ export default function CarouselsPage() {
                 value={form.link_url}
                 onChange={(e) => setForm({ ...form, link_url: e.target.value })}
                 className={inputClass}
-                placeholder="#collection or /product/slug"
+                placeholder="/shop or /product/slug"
               />
             </div>
           </div>

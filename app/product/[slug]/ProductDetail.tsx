@@ -9,6 +9,7 @@ import {
   ShoppingBag,
   Minus,
   Plus,
+  Check,
   Sparkles,
   Droplets,
   Truck,
@@ -33,6 +34,8 @@ export function ProductDetail({
   );
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [openAccordion, setOpenAccordion] = useState<string | null>(
     "materials"
@@ -56,8 +59,10 @@ export function ProductDetail({
     // Minimum swipe threshold: 50px
     if (diff > 50 && activeImage < product.images.length - 1) {
       setActiveImage((prev) => prev + 1);
+      setImageLoaded(false);
     } else if (diff < -50 && activeImage > 0) {
       setActiveImage((prev) => prev - 1);
+      setImageLoaded(false);
     }
     setTouchStart(null);
   };
@@ -80,13 +85,10 @@ export function ProductDetail({
       category: product.category,
     });
 
-    toast.success(`${product.title} added to bag`, {
-      description: selectedSize ? `Size ${selectedSize} × ${quantity}` : `× ${quantity}`,
-      action: {
-        label: "View Bag",
-        onClick: () => openCart(),
-      },
-    });
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
   };
 
   const toggleAccordion = (key: string) => {
@@ -129,23 +131,34 @@ export function ProductDetail({
 
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-14">
           {/* ======== IMAGE GALLERY ======== */}
-          <div className="space-y-3 animate-fade-in">
+          <div className="space-y-3">
             {/* Main Image with Touch Swipe */}
             <div 
               className="relative aspect-square overflow-hidden rounded-2xl bg-bone touch-pan-y"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
+              {/* Shimmer skeleton until image loads */}
+              <div
+                className={`absolute inset-0 skeleton-shimmer transition-opacity duration-300 z-0 ${
+                  imageLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
+              />
               <Image
+                key={activeImage}
                 src={product.images[activeImage]}
                 alt={product.title}
                 fill
-                className="object-cover transition-all duration-300 select-none"
+                className={`object-cover transition-opacity duration-300 select-none z-0 ${
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                draggable={false}
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                onLoad={() => setImageLoaded(true)}
               />
               {discount && (
-                <div className="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-full bg-champagne px-3 py-1 sm:px-4 sm:py-1.5 text-[11px] sm:text-xs font-semibold tracking-wide text-white shadow-sm">
+                <div className="absolute left-3 top-3 sm:left-4 sm:top-4 rounded-full bg-champagne px-3 py-1 sm:px-4 sm:py-1.5 text-[11px] sm:text-xs font-semibold tracking-wide text-white shadow-sm z-10">
                   {discount}% OFF
                 </div>
               )}
@@ -175,7 +188,12 @@ export function ProductDetail({
                 {product.images.map((img, i) => (
                   <button
                     key={i}
-                    onClick={() => setActiveImage(i)}
+                    onClick={() => {
+                      if (activeImage !== i) {
+                        setImageLoaded(false);
+                        setActiveImage(i);
+                      }
+                    }}
                     className={`relative h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-xl border-2 transition-all ${
                       activeImage === i
                         ? "border-champagne ring-2 ring-champagne/20"
@@ -196,7 +214,7 @@ export function ProductDetail({
           </div>
 
           {/* ======== PRODUCT INFO ======== */}
-          <div className="animate-slide-up lg:py-4">
+          <div className="lg:py-4">
             {/* Category */}
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne">
               {product.category}
@@ -260,11 +278,11 @@ export function ProductDetail({
             )}
 
             {/* Quantity */}
-            <div className="mt-6">
+            <div className="mt-6 flex items-center gap-5">
               <label className="text-xs sm:text-sm font-semibold text-midnight">
                 Quantity
               </label>
-              <div className="mt-3 inline-flex items-center rounded-xl border border-border bg-white shadow-xs">
+              <div className="inline-flex items-center rounded-xl border border-border bg-white shadow-xs">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="flex h-12 w-12 items-center justify-center text-slate-muted transition-colors hover:text-midnight active:bg-bone rounded-l-xl"
@@ -272,7 +290,7 @@ export function ProductDetail({
                 >
                   <Minus className="h-4 w-4" />
                 </button>
-                <span className="flex h-12 w-12 items-center justify-center border-x border-border text-sm font-semibold text-midnight">
+                <span className="flex h-12 w-12 select-none items-center justify-center border-x border-border text-sm font-semibold text-midnight">
                   {quantity}
                 </span>
                 <button
@@ -290,10 +308,23 @@ export function ProductDetail({
               <button
                 id="add-to-bag-desktop"
                 onClick={handleAddToBag}
-                className="btn-luxury flex w-full items-center justify-center gap-2.5 rounded-full bg-midnight py-4 text-sm font-semibold tracking-wide text-white transition-all hover:bg-midnight/90 shadow-lg shadow-midnight/10 active:scale-[0.99]"
+                className={`btn-luxury flex w-full items-center justify-center gap-2.5 rounded-full py-4 text-sm font-semibold tracking-wide text-white transition-all shadow-lg active:scale-[0.99] ${
+                  isAdded
+                    ? "bg-midnight ring-1 ring-champagne/40"
+                    : "bg-midnight hover:bg-midnight/90 shadow-midnight/10"
+                }`}
               >
-                <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
-                Add to Bag — {formatPrice(product.price * quantity)}
+                {isAdded ? (
+                  <>
+                    <Check className="h-4 w-4 text-champagne" strokeWidth={2.5} />
+                    Added to Bag
+                  </>
+                ) : (
+                  <>
+                    <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
+                    Add to Bag — {formatPrice(product.price * quantity)}
+                  </>
+                )}
               </button>
             </div>
 
@@ -339,7 +370,7 @@ export function ProductDetail({
 
         {/* ======== RELATED PRODUCTS ======== */}
         {relatedProducts.length > 0 && (
-          <section className="mt-12 sm:mt-16 border-t border-border pt-8 sm:pt-12 lg:mt-20 lg:pt-16">
+          <section className="mt-12 sm:mt-16 border-t border-border pt-8 sm:pt-12 pb-4 lg:mt-20 lg:pt-16 lg:pb-0">
             <h2 className="font-serif text-xl sm:text-2xl font-semibold text-midnight lg:text-3xl">
               You May Also Like
             </h2>
@@ -355,7 +386,7 @@ export function ProductDetail({
       {/* ======== MOBILE STICKY ADD TO BAG DUAL BAR ======== */}
       <aside
         aria-label="Mobile sticky purchase bar"
-        className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md lg:hidden"
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-white/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md lg:hidden"
       >
         <div className="flex items-center gap-3 max-w-lg mx-auto">
           {/* Price & Size Info */}
@@ -372,10 +403,23 @@ export function ProductDetail({
           <button
             id="add-to-bag-mobile"
             onClick={handleAddToBag}
-            className="btn-luxury flex-1 flex items-center justify-center gap-2 rounded-full bg-midnight py-3.5 px-6 text-sm font-semibold tracking-wide text-white shadow-md active:scale-98 transition-transform"
+            className={`btn-luxury flex-1 flex items-center justify-center gap-2 rounded-full py-3.5 px-6 text-sm font-semibold tracking-wide text-white shadow-md active:scale-98 transition-all ${
+              isAdded
+                ? "bg-midnight ring-1 ring-champagne/40"
+                : "bg-midnight"
+            }`}
           >
-            <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
-            Add to Bag
+            {isAdded ? (
+              <>
+                <Check className="h-4 w-4 text-champagne" strokeWidth={2.5} />
+                Added
+              </>
+            ) : (
+              <>
+                <ShoppingBag className="h-4 w-4" strokeWidth={1.5} />
+                Add to Bag
+              </>
+            )}
           </button>
         </div>
       </aside>

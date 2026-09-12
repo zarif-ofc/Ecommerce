@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { WhatsAppFloatingButton } from "@/components/ui/WhatsAppFloatingButton";
+import { ScrollManager } from "@/components/layout/ScrollManager";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -61,7 +62,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);`,
+          }}
+        />
+      </head>
       <body className="font-sans antialiased selection:bg-champagne/20">
+        <ScrollManager />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

@@ -8,7 +8,8 @@ export function WhatsAppFloatingButton() {
   const pathname = usePathname();
   const isCartOpen = useCartStore((s) => s.isOpen);
 
-  // Hide floating button on checkout page or when cart drawer is open
+  // Hide floating button on checkout page, product pages (has sticky bar), or when cart drawer is open
+  const isProductPage = pathname.startsWith("/product/");
   if (pathname === "/checkout" || isCartOpen) {
     return null;
   }
@@ -19,10 +20,15 @@ export function WhatsAppFloatingButton() {
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 
+  // On product pages, raise the button above the mobile sticky bar
+  const bottomClass = isProductPage
+    ? "bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:bottom-6"
+    : "bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:bottom-6";
+
   return (
     <aside
       aria-label="WhatsApp customer support"
-      className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] right-4 z-40 sm:bottom-6 sm:right-6 animate-fade-in"
+      className={`fixed ${bottomClass} right-4 z-40 sm:right-6 animate-fade-in`}
     >
       <a
         href={whatsappUrl}

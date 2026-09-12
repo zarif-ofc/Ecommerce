@@ -1,12 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/types/database";
 import { formatPrice, calculateDiscount } from "@/lib/utils";
 
-import { toast } from "sonner";
-import { Plus } from "lucide-react";
+import { Plus, Check } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 
 interface ProductCardProps {
@@ -15,9 +15,10 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
   const discount = calculateDiscount(product.price, product.original_price);
   const addItem = useCartStore((s) => s.addItem);
-  const openCart = useCartStore((s) => s.openCart);
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -35,29 +36,36 @@ export function ProductCard({ product, index }: ProductCardProps) {
       category: product.category,
     });
 
-    toast.success(`${product.title} added to bag`, {
-      action: {
-        label: "View Bag",
-        onClick: () => openCart(),
-      },
-    });
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
   };
 
   return (
     <Link
       href={`/product/${product.slug}`}
       id={`product-card-${product.slug}`}
-      className={`product-card group block animate-slide-up stagger-${Math.min(index + 1, 6)} touch-press`}
+      className="product-card group block touch-press"
     >
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden rounded-xl sm:rounded-2xl bg-bone">
+        {/* Shimmer skeleton placeholder */}
+        <div
+          className={`absolute inset-0 skeleton-shimmer transition-opacity duration-500 z-0 ${
+            imageLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        />
         <Image
           src={product.images[0]}
           alt={product.title}
           fill
-          className="product-card-image object-cover"
+          className={`product-card-image object-cover transition-opacity duration-500 z-0 ${
+            imageLoaded ? "opacity-100" : "opacity-0"
+          }`}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           priority={index < 4}
+          onLoad={() => setImageLoaded(true)}
         />
 
         {/* Discount Badge */}
@@ -70,10 +78,23 @@ export function ProductCard({ product, index }: ProductCardProps) {
         {/* Quick Add Button for Mobile & Desktop */}
         <button
           onClick={handleQuickAdd}
-          className="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/95 text-midnight shadow-md backdrop-blur-sm transition-all hover:bg-midnight hover:text-white active:scale-90"
-          aria-label={`Quick add ${product.title} to bag`}
+          className={`absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-3 flex items-center justify-center rounded-full shadow-md backdrop-blur-sm transition-all duration-300 z-10 active:scale-95 ${
+            isAdded
+              ? "bg-midnight text-white px-2.5 py-1.5 h-8 sm:h-9 gap-1.5 ring-1 ring-white/20"
+              : "bg-white/95 text-midnight hover:bg-midnight hover:text-white h-8 w-8 sm:h-9 sm:w-9"
+          }`}
+          aria-label={isAdded ? `${product.title} added to bag` : `Quick add ${product.title} to bag`}
         >
-          <Plus className="h-4 w-4" strokeWidth={2} />
+          {isAdded ? (
+            <>
+              <Check className="h-3.5 w-3.5 text-champagne shrink-0" strokeWidth={2.5} />
+              <span className="text-[11px] font-medium tracking-tight pr-0.5 whitespace-nowrap">
+                Added
+              </span>
+            </>
+          ) : (
+            <Plus className="h-4 w-4" strokeWidth={2} />
+          )}
         </button>
 
         {/* Quick View Overlay (Desktop hover) */}

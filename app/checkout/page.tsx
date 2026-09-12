@@ -229,7 +229,7 @@ export default function CheckoutPage() {
 
           <div className="mt-4 sm:mt-8 grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12">
             {/* ======== LEFT: FORM ======== */}
-            <div className="space-y-6 sm:space-y-8 animate-slide-up">
+            <div className="space-y-6 sm:space-y-8">
               {/* Customer Information */}
               <fieldset className="space-y-4 sm:space-y-5">
                 <legend className="text-xs font-semibold uppercase tracking-[0.2em] text-midnight">
@@ -492,7 +492,7 @@ export default function CheckoutPage() {
           {/* ======== MOBILE STICKY SUBMIT BAR ======== */}
           <aside
             aria-label="Mobile checkout submit bar"
-            className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-white/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md lg:hidden"
+            className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-white/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md lg:hidden"
           >
             <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
               <div className="flex flex-col">

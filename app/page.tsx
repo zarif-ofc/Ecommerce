@@ -3,6 +3,7 @@ import { HomeContent } from "./HomeContent";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { mockProducts } from "@/lib/mock-data";
 import type { Product, Carousel } from "@/types/database";
+import { HeroSkeleton, ProductGridSkeleton } from "@/components/ui/Skeleton";
 
 async function getProducts(): Promise<Product[]> {
   if (!isSupabaseConfigured) {
@@ -62,21 +63,14 @@ export default async function HomePage() {
 
 function HomeLoading() {
   return (
-    <div className="pt-16 lg:pt-[72px]">
+    <div className="pt-16 lg:pt-[72px] min-h-screen bg-white">
       {/* Hero skeleton */}
-      <div className="relative h-[520px] bg-bone animate-shimmer bg-[length:200%_100%] bg-gradient-to-r from-bone via-white to-bone" />
+      <HeroSkeleton />
       {/* Grid skeleton */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i}>
-              <div className="aspect-square rounded-xl bg-bone animate-shimmer bg-[length:200%_100%] bg-gradient-to-r from-bone via-white to-bone" />
-              <div className="mt-3 h-4 w-3/4 rounded bg-bone" />
-              <div className="mt-2 h-4 w-1/2 rounded bg-bone" />
-            </div>
-          ))}
-        </div>
+        <ProductGridSkeleton count={8} />
       </div>
     </div>
   );
 }
+

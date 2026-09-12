@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
@@ -20,7 +20,7 @@ const defaultSlide: Carousel = {
     "Minimalist silver pieces crafted for everyday elegance. Hypoallergenic, enduring, and designed to tell your story.",
   image_url: "/images/hero-banner.jpg",
   mobile_image_url: "",
-  link_url: "#collection",
+  link_url: "/shop",
   sort_order: 0,
   is_active: true,
   created_at: new Date().toISOString(),
@@ -114,11 +114,8 @@ export function HomeContent({ products, carousels }: HomeContentProps) {
           {/* Content Overlay */}
           <div className="absolute inset-0 flex items-end pb-8 sm:items-center sm:pb-0 z-10">
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="max-w-lg animate-slide-up">
-                <span className="inline-block rounded-full border border-champagne/30 bg-champagne/15 px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-champagne-dark backdrop-blur-xs">
-                  New Collection · 2026
-                </span>
-                <h1 className="mt-3 sm:mt-5 font-serif text-3xl xs:text-4xl sm:text-5xl lg:text-[56px] font-semibold leading-[1.15] tracking-tight text-midnight">
+              <div className="max-w-lg">
+                <h1 className="font-serif text-3xl xs:text-4xl sm:text-5xl lg:text-[56px] font-semibold leading-[1.15] tracking-tight text-midnight">
                   {currentSlide.title ? (
                     currentSlide.title
                   ) : (
@@ -135,7 +132,11 @@ export function HomeContent({ products, carousels }: HomeContentProps) {
                 </p>
                 <div className="mt-5 sm:mt-7 flex items-center gap-3">
                   <Link
-                    href={currentSlide.link_url || "#collection"}
+                    href={
+                      currentSlide.link_url && currentSlide.link_url !== "#collection"
+                        ? currentSlide.link_url
+                        : "/shop"
+                    }
                     id="hero-cta"
                     className="btn-luxury inline-flex w-full sm:w-auto justify-center items-center gap-2 rounded-full bg-midnight px-6 sm:px-8 py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-white transition-all hover:bg-midnight/90 active:scale-95 shadow-lg shadow-midnight/10"
                   >
@@ -151,7 +152,7 @@ export function HomeContent({ products, carousels }: HomeContentProps) {
           {slides.length > 1 && (
             <>
               {/* Pagination Dots */}
-              <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 flex items-center gap-2 z-20">
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-8 sm:translate-x-0 flex items-center gap-2 z-20">
                 {slides.map((_, i) => (
                   <button
                     key={i}
