@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Shop elegant four-leaf clover station bracelets and evil eye talisman beaded bracelets by Cresol. Hypoallergenic daily wear.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function BraceletsPage() {
   const products = await getProducts("Bracelets");
 

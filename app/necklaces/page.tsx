@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Explore delicate sterling silver necklaces, vintage-inspired keepsake lockets, and refined pendants crafted with enduring quality.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function NecklacesPage() {
   const products = await getProducts("Necklaces");
 

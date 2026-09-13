@@ -181,9 +181,28 @@ export function SingleImageUpload({
             </div>
           </div>
 
-          <div className="flex items-center justify-between px-3 py-2 border-t border-border bg-white text-[11px] text-text-muted truncate">
-            <span className="truncate max-w-[80%] font-mono">{value}</span>
-            <span className="text-mint font-semibold flex-shrink-0">Uploaded</span>
+          <div className="flex items-center justify-between px-3 py-2 border-t border-border bg-white text-[11px] text-text-muted gap-2">
+            <span className="truncate flex-1 font-mono text-[10px] text-text-muted">{value}</span>
+            <div className="flex items-center gap-1.5 flex-shrink-0">
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                className="inline-flex items-center gap-1 rounded-md bg-bg-hover hover:bg-mint-light hover:text-mint px-2 py-1 text-[11px] font-medium text-text-secondary transition-colors"
+              >
+                <RefreshCw className="h-3 w-3" />
+                Change
+              </button>
+              <button
+                type="button"
+                onClick={handleClear}
+                disabled={uploading}
+                className="inline-flex items-center gap-1 rounded-md bg-rose-50 hover:bg-rose-100 px-2 py-1 text-[11px] font-medium text-rose-600 transition-colors"
+              >
+                <X className="h-3 w-3" />
+                Clear
+              </button>
+            </div>
           </div>
         </div>
       ) : (

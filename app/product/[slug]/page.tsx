@@ -5,6 +5,9 @@ import { mockProducts } from "@/lib/mock-data";
 import type { Product } from "@/types/database";
 import { ProductDetail } from "./ProductDetail";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
 }

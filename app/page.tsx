@@ -5,6 +5,9 @@ import { mockProducts } from "@/lib/mock-data";
 import type { Product, Carousel } from "@/types/database";
 import { HeroSkeleton, ProductGridSkeleton } from "@/components/ui/Skeleton";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 async function getProducts(): Promise<Product[]> {
   if (!isSupabaseConfigured) {
     return mockProducts;

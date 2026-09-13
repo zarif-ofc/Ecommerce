@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Discover handcrafted sterling silver rings, minimalist bands, and natural blue moonstone statement pieces by Cresol. Designed for all-day comfort.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function RingsPage() {
   const products = await getProducts("Rings");
 

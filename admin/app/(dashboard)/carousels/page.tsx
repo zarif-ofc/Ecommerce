@@ -423,19 +423,59 @@ export default function CarouselsPage() {
 
             {/* 2. Mobile Image */}
             <div className="rounded-2xl border border-border bg-[#fcfdfc] p-4 space-y-2">
-              <div className="flex items-center gap-2 mb-1">
-                <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-mint-light text-mint border border-mint-border text-xs">
-                  <Smartphone className="h-3.5 w-3.5" />
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-mint-light text-mint border border-mint-border text-xs">
+                    <Smartphone className="h-3.5 w-3.5" />
+                  </div>
+                  <span className="text-xs font-bold text-text-primary">2. Mobile Phone Banner</span>
+                  <span className="text-[11px] text-text-muted font-normal">(Optional)</span>
                 </div>
-                <span className="text-xs font-bold text-text-primary">2. Mobile Phone Banner</span>
-                <span className="text-[11px] text-text-muted font-normal">(Optional — defaults to PC banner if empty)</span>
+                {form.mobile_image_url ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm({ ...form, mobile_image_url: "" });
+                      toast.info("Mobile banner reset to use desktop image fallback");
+                    }}
+                    className="text-[11px] font-semibold text-rose-600 hover:text-rose-700 transition-colors"
+                  >
+                    Reset to Desktop Fallback
+                  </button>
+                ) : form.image_url ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm({ ...form, mobile_image_url: form.image_url });
+                      toast.success("Copied desktop image to mobile banner");
+                    }}
+                    className="text-[11px] font-semibold text-mint hover:text-mint-dark transition-colors"
+                  >
+                    Copy Desktop Image
+                  </button>
+                ) : null}
               </div>
+
+              {form.mobile_image_url ? (
+                <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-2.5 text-[11px] text-amber-800 flex items-center justify-between gap-2">
+                  <span>
+                    Mobile currently has a <strong>custom image</strong>. If you want mobile to use your new PC banner, click <strong>Reset to Desktop Fallback</strong>.
+                  </span>
+                </div>
+              ) : (
+                <div className="rounded-xl border border-border/80 bg-bg-tertiary/60 p-2 text-[11px] text-text-muted flex items-center gap-1.5">
+                  <span>
+                    Mobile screens will automatically use the <strong>PC / Desktop banner</strong> above.
+                  </span>
+                </div>
+              )}
+
               <SingleImageUpload
                 value={form.mobile_image_url}
                 onChange={(url) => setForm({ ...form, mobile_image_url: url })}
                 folder="carousels"
                 label="Mobile Image (Portrait / Tall)"
-                helperText="Recommended: 800×1000 or 4:5 / 9:16 portrait (max 10MB)"
+                helperText="Leave empty to automatically use the PC banner on mobile devices"
               />
             </div>
           </div>

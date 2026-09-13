@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Explore Cresol's complete collection of hypoallergenic 925 sterling silver jewelry. Minimalist rings, keepsake lockets, and delicate chain bracelets.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function ShopAllPage() {
   const products = await getProducts("All");
 
