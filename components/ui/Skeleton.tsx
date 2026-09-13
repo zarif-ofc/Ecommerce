@@ -56,7 +56,7 @@ export function ProductGridSkeleton({ count = 8 }: { count?: number }) {
 export function HeroSkeleton() {
   return (
     <div className="relative h-[500px] xs:h-[540px] sm:h-[580px] lg:h-[640px] skeleton-shimmer overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/25 sm:bg-gradient-to-r sm:from-white/90 sm:via-white/60 sm:to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-white/75 via-white/55 to-white/20 sm:bg-gradient-to-r sm:from-white/70 sm:via-white/45 sm:to-transparent" />
       <div className="absolute inset-0 flex items-end pb-8 sm:items-center sm:pb-0 z-10">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-lg space-y-4">
