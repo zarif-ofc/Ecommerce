@@ -108,8 +108,8 @@ export function HomeContent({ products, carousels }: HomeContentProps) {
             sizes="100vw"
           />
 
-          {/* Mobile-Friendly Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/25 sm:bg-gradient-to-r sm:from-white/90 sm:via-white/60 sm:to-transparent" />
+          {/* Gradient Overlay (Mobile-friendly vertical gradient, desktop soft horizontal wash reduced by 20%) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/70 to-white/25 sm:bg-gradient-to-r sm:from-white/70 sm:via-white/45 sm:to-transparent" />
 
           {/* Content Overlay */}
           <div className="absolute inset-0 flex items-end pb-8 sm:items-center sm:pb-0 z-10">
